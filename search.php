@@ -62,7 +62,7 @@
 		
 		for($i = $pagenum-4; $i < $pagenum; $i++){
 			if($i > 0){
-		        $paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'" class="btn btn-default">'.$i.'</a> &nbsp; ';
+		        //$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'" class="btn btn-default">'.$i.'</a> &nbsp; ';
 			}
 	    }
     }
@@ -70,7 +70,7 @@
 	$paginationCtrls .= ''.$pagenum.' &nbsp; ';
 	
 	for($i = $pagenum+1; $i <= $last; $i++){
-		$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'" class="btn btn-default">'.$i.'</a> &nbsp; ';
+		//$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'" class="btn btn-default">'.$i.'</a> &nbsp; ';
 		if($i >= $pagenum+4){
 			break;
 		}
@@ -88,8 +88,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<title>Pagination | Cyberkodes</title>
+	<link rel="stylesheet" href="css/Bootstrap-v4.1.0.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="js/Bootstrap-v4.1.0.min.js"></script>
+	<style>
+		.search-field {
+			display: flex;
+			height: 2.4rem;
+			justify-content: flex-end;
+		}
+	</style>
 </head>
 <body>
 <div class="container">
@@ -98,23 +107,26 @@
 	
 	<section>
 		<form action = "search.php" method = "POST">
-			<div class = "form-group col-md-4">
-				<input type = "search" required class = "form-control" name = "searchKey" value = "<?php if (isset($_POST['searchKey'])){echo $_POST['searchKey'];};?>"/>
+			<div class = "search-field">
+				<div class = "form-group">
+					<input height = "100%" type = "search" required class = "form-control" name = "searchKey" value = "<?php if (isset($_POST['searchKey'])){echo $_POST['searchKey'];};?>"/>
+				</div>
+				<button style = "cursor: pointer;border: none;" type = "submit" name = "formSearch" class = ""><span class = "fa fa-search"></span></button>
 			</div>
-			<input type = "submit" value = "search" name = "formSearch" class = "" />
 		</form>
 	</section>
 	
-	<section class = "row">
-		<div class = "col-md-12">
+	<section class = "">
+		<div style= "" class = "row justify-content-center">
 			<?php while($crow = mysqli_fetch_array($nquery)){ ?>
-				<div style = "background-color: gainsboro;margin: 0.3em;padding: 0.4em;" class = "col-md-2">
-					<?php echo $crow['userid']; ?>
+				<div style = "background-color: gainsboro;margin: 0.5em;padding: 0.4em;" class = "col-sm-5">
+					<img width = "100%" height = "100%" src = "pictures/therapy_img_11.jpg" />
 				</div>
-				<div style = "background-color: gainsboro;margin: 0.3em;padding: 0.4em;" class = "col-md-4">
+				<div style = "background-color: gainsboro;margin: 0.5em;padding: 0.4em;" class = "col-sm-5">
 					<?php echo $crow['firstname']; ?>
-				</div>
-				<div style = "background-color: gainsboro;margin: 0.3em;padding: 0.4em;" class = "col-md-4">
+					<?php echo "<br />"; ?>
+					<?php echo $crow['userid']; ?>
+					<?php echo "<br />"; ?>
 					<?php echo $crow['lastname']; ?>
 				</div>
 			<?php }; ?>

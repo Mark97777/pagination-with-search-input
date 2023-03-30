@@ -62,7 +62,7 @@
 		
 		for($i = $pagenum-4; $i < $pagenum; $i++){
 			if($i > 0){
-		        $paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'" class="btn btn-default">'.$i.'</a> &nbsp; ';
+		        //$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'" class="btn btn-default">'.$i.'</a> &nbsp; ';
 			}
 	    }
     }
@@ -70,8 +70,8 @@
 	$paginationCtrls .= ''.$pagenum.' &nbsp; ';
 	
 	for($i = $pagenum+1; $i <= $last; $i++){
-		$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'" class="btn btn-default">'.$i.'</a> &nbsp; ';
-		if($i >= $pagenum+4){
+		//$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'" class="btn btn-default">'.$i.'</a> &nbsp; ';
+		if($i >= 4){
 			break;
 		}
 	}

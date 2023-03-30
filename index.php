@@ -2,15 +2,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<title>Pagination | Cyberkodes</title>
+	<style>
+		
+	</style>
+	<link rel="stylesheet" href="css/Bootstrap-v4.1.0.min.css" />
+	<script src="js/Bootstrap-v4.1.0.min.js"></script>
 </head>
 <body>
 <div class="container">
 	
 	<h1 class = "page-header text-center">Upgraded Pagination with search functionality | CyberKodes</h1>
 	
-	<section>
+	<section class = "container">
 		<form action = "search.php" method = "POST">
 			<div class = "form-group col-md-4">
 				<input type = "search" required class = "form-control" name = "searchKey" value = "<?php if (isset($_POST['searchKey'])){echo $_POST['searchKey'];};?>"/>
@@ -19,16 +23,17 @@
 		</form>
 	</section>
 	
-	<section class = "row">
-		<div class = "col-md-12">
+	<section class = "">
+		<div class = "row">
 			<?php while($crow = mysqli_fetch_array($nquery)){ ?>
-				<div style = "background-color: gainsboro;margin: 0.3em;padding: 0.4em;" class = "col-md-2">
-					<?php echo $crow['userid']; ?>
+				<div style = "background-color: gainsboro;margin: 0.3em;padding: 0.4em;" class = "col-md-5">
+					<img width = "100%" height = "100%" src = "pictures/therapy_img_11.jpg" />
 				</div>
-				<div style = "background-color: gainsboro;margin: 0.3em;padding: 0.4em;" class = "col-md-4">
+				<div style = "background-color: gainsboro;margin: 0.3em;padding: 0.4em;" class = "col-md-5">
 					<?php echo $crow['firstname']; ?>
-				</div>
-				<div style = "background-color: gainsboro;margin: 0.3em;padding: 0.4em;" class = "col-md-4">
+					<?php echo "<br />"; ?>
+					<?php echo $crow['userid']; ?>
+					<?php echo "<br />"; ?>
 					<?php echo $crow['lastname']; ?>
 				</div>
 			<?php }; ?>
